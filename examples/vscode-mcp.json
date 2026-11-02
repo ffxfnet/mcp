@@ -1,0 +1,19 @@
+{
+  "servers": {
+    "ffxf": {
+      "type": "http",
+      "url": "https://ffxf.net/mcp",
+      "headers": {
+        "Authorization": "Bearer ${input:ffxf-api-key}"
+      }
+    }
+  },
+  "inputs": [
+    {
+      "id": "ffxf-api-key",
+      "type": "promptString",
+      "description": "FFxF API key",
+      "password": true
+    }
+  ]
+}

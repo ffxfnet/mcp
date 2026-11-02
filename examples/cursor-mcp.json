@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "ffxf": {
+      "url": "https://ffxf.net/mcp",
+      "headers": {
+        "Authorization": "Bearer ffxf_live_…"
+      }
+    }
+  }
+}
