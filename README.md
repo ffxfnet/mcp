@@ -93,7 +93,7 @@ Hourly machines draw on prepaid credit; monthly machines raise an invoice. Price
 
 ## Tools
 
-71 tools in version 1.12.0. Each tool carries MCP annotations (read-only, destructive) so clients can ask before acting.
+71 tools in version 1.12.1. Each tool carries MCP annotations (read-only, destructive) so clients can ask before acting.
 
 ### Catalogue (no key)
 

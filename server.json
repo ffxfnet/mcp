@@ -1,0 +1,30 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "net.ffxf/cloud",
+  "title": "FFxF",
+  "description": "Create and manage VMs, managed databases, firewalls and load balancers in Montréal, Canada.",
+  "version": "1.12.1",
+  "websiteUrl": "https://ffxf.net/agents",
+  "repository": {
+    "url": "https://github.com/ffxfnet/mcp",
+    "source": "github",
+    "id": "1443416008"
+  },
+  "icons": [
+    { "src": "https://ffxf.net/public/favicon.svg", "mimeType": "image/svg+xml", "sizes": ["any"] },
+    { "src": "https://ffxf.net/public/apple-touch-icon.png", "mimeType": "image/png", "sizes": ["180x180"] }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://ffxf.net/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer followed by an FFxF API key (console.ffxf.net/account/api-keys). Catalogue tools work without it.",
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}
