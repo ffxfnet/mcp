@@ -93,7 +93,7 @@ Hourly machines draw on prepaid credit; monthly machines raise an invoice. Price
 
 ## Tools
 
-71 tools in version 1.12.1. Each tool carries MCP annotations (read-only, destructive) so clients can ask before acting.
+71 tools in version 1.12.2. Each tool carries MCP annotations (read-only, destructive) so clients can ask before acting.
 
 ### Catalogue (no key)
 
@@ -124,7 +124,7 @@ Hourly machines draw on prepaid credit; monthly machines raise an invoice. Price
 | `power_vm` | start, shutdown (clean ACPI), reboot, or stop (hard power-off). |
 | `rename_vm` | Changes the hostname, inside the guest and in the console. |
 | `reinstall_vm` | ERASES THE DISK and redeploys another image. |
-| `destroy_vm` | DESTROYS the machine and its disk, with no undo and no backup kept. |
+| `destroy_vm` | DESTROYS the machine and its disk, with no undo and no backup kept. With `when=now` on a monthly machine, the unused paid time, less the hours used at the hourly rate, returns as account credit (gifted credit returns as gifted); nothing for an annual plan. |
 | `get_action` | Follows an asynchronous action (create, reinstall, power…). |
 | `list_vm_actions` | History of actions on one machine, from the API and the console. |
 | `get_vm_network` | IPv4 and IPv6 addresses of a machine with their reverse DNS, and its private networks. |
