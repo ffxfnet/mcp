@@ -87,13 +87,13 @@ The server sends these rules to the client at `initialize`; they are summarised 
 2. Call `estimate_vm` and show the price to the user before `create_vm`.
 3. Creation, reinstall and power changes are asynchronous: poll `get_action` until its status leaves `running`.
 4. `destroy_vm`, `reinstall_vm`, `delete_database` and `delete_logical_database` erase data. Ask the user first. `destroy_vm` and `reinstall_vm` require the machine's exact hostname, and `delete_database` the database's exact name, as confirmation.
-5. When adding a firewall, keep TCP 22 (or 3389 on Windows) open unless the user says otherwise.
+5. When adding a firewall, keep TCP 22 (or 3389 on Windows) open unless the user says otherwise. Rules are read in order and the first match wins; a rule allows or denies and can be disabled. With `private_network: true`, open SSH or RDP from the private network too.
 
 Hourly machines draw on prepaid credit; monthly machines raise an invoice. Prices are in Canadian dollars, taxes included: https://ffxf.net/pricing
 
 ## Tools
 
-71 tools in version 1.12.2. Each tool carries MCP annotations (read-only, destructive) so clients can ask before acting.
+71 tools in version 1.13.0. Each tool carries MCP annotations (read-only, destructive) so clients can ask before acting.
 
 ### Catalogue (no key)
 
@@ -148,8 +148,8 @@ Hourly machines draw on prepaid credit; monthly machines raise an invoice. Price
 |---|---|
 | `list_firewalls` | The account's firewalls with their inbound rules and the machines they protect, plus the quota. |
 | `get_firewall` | One firewall: its rules and the machines it protects, with the status of each (applied, pending, error). |
-| `create_firewall` | Creates a reusable set of inbound and outbound rules. |
-| `update_firewall` | rules REPLACES the whole list and is applied at once to every attached machine: send every rule to keep, not only the new one (read get_firewall first). |
+| `create_firewall` | Creates a reusable set of inbound and outbound rules (allow or deny, in order). `private_network` also filters the private network and site-to-site VPN. |
+| `update_firewall` | rules REPLACES the whole list, in order, and is applied at once to every attached machine: send every rule to keep, not only the new one (read get_firewall first). To edit, disable or move one rule, send the full list with that change. `private_network` turns filtering of the private network on or off. |
 | `delete_firewall` | Deletes a firewall attached to no machine. |
 | `attach_firewall` | From now on the machine refuses inbound traffic no rule of its firewalls opens; enforced within about ten seconds of the call. |
 | `detach_firewall` | Removes the firewall's rules from the machine; with no other firewall it accepts all inbound traffic again. |
