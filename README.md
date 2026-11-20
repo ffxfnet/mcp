@@ -93,7 +93,7 @@ Hourly machines draw on prepaid credit; monthly machines raise an invoice. Price
 
 ## Tools
 
-71 tools in version 1.13.0. Each tool carries MCP annotations (read-only, destructive) so clients can ask before acting.
+71 tools in version 1.13.2. Each tool carries MCP annotations (read-only, destructive) so clients can ask before acting.
 
 ### Catalogue (no key)
 
@@ -107,7 +107,7 @@ Hourly machines draw on prepaid credit; monthly machines raise an invoice. Price
 
 | Tool | What it does |
 |---|---|
-| `get_account` | Credit balance, hourly burn rate and runway, quota and budget caps. |
+| `get_account` | Credit balance, hourly burn rate and runway, quota and budget caps, and traffic: the account's traffic pool this month (used, allowance earned and projected, estimated overage). |
 | `list_ssh_keys` | SSH keys saved on the account, to pass to create_vm. |
 | `add_ssh_key` | Saves a public key on the account so new machines can be reached without a password. |
 | `delete_ssh_key` | Removes a key from the account. |
@@ -117,9 +117,9 @@ Hourly machines draw on prepaid credit; monthly machines raise an invoice. Price
 | Tool | What it does |
 |---|---|
 | `list_vms` | The account's machines with their status, addresses and billing. |
-| `get_vm` | One machine: status, IPv4, IPv6 /64, specs, traffic (Internet only, this traffic month: used_gb, limit_gb, period_ends_at), billing, suspension. |
+| `get_vm` | One machine: status, IPv4, IPv6 /64, specs, traffic (Internet only, this calendar month: used_gb, limit_gb, period_ends_at, and pool, the account's shared allowance), billing, suspension. |
 | `get_vm_metrics` | CPU, memory, disk and network as measured from outside the machine. |
-| `estimate_vm` | Runs every check of create_vm and prices it, without creating anything: would_succeed, hourly rate, monthly price, credit required. |
+| `estimate_vm` | Runs every check of create_vm and prices it, without creating anything: would_succeed, hourly rate, monthly price, credit required (unpaid traffic overage, traffic_debt, included). |
 | `create_vm` | Orders a machine and spends credit (hourly) or raises an invoice (monthly). |
 | `power_vm` | start, shutdown (clean ACPI), reboot, or stop (hard power-off). |
 | `rename_vm` | Changes the hostname, inside the guest and in the console. |
